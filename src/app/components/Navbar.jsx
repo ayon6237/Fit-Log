@@ -32,14 +32,14 @@ const Navbar = () => {
             href="/"
             className="rounded-full px-6 py-2.5 text-sm font-semibold tracking-wide text-white transition-all duration-200 hover:bg-[#CCFF00] hover:text-black"
           >
-            WORKOUT
+            Workouts
           </Link>
 
           <Link
             href="/my-plan"
             className="rounded-full px-6 py-2.5 text-sm font-semibold tracking-wide text-white transition-all duration-200 hover:bg-[#CCFF00] hover:text-black"
           >
-            MY PLAN
+            My Plan
           </Link>
 
         </div>
@@ -51,7 +51,7 @@ const Navbar = () => {
             href="/my-plan"
             className="group flex items-center gap-2 rounded-full border border-[#CCFF00]/30 bg-[#CCFF00] px-3 py-2 text-xs font-black tracking-wide text-black transition-all hover:scale-105 md:px-4"
           >
-            <span className="hidden sm:inline">PLAN</span>
+            <span className="hidden sm:inline">Plan</span>
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-black px-1.5 text-[10px] text-[#CCFF00]">
               0
             </span>
@@ -61,7 +61,7 @@ const Navbar = () => {
             href="/my-plan"
             className="group flex items-center gap-2 rounded-full border border-white/20 bg-transparent px-3 py-2 text-xs font-black tracking-wide text-white transition-all hover:border-[#CCFF00] hover:text-[#CCFF00] md:px-4"
           >
-            <span className="hidden sm:inline">SAVED</span>
+            <span className="hidden sm:inline">Saved</span>
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-white/10 px-1.5 text-[10px]">
               0
             </span>
@@ -78,14 +78,14 @@ const Navbar = () => {
             href="/"
             className="flex-1 rounded-lg border border-white/10 bg-white/5 py-2.5 text-center text-xs font-bold tracking-wider text-white transition hover:bg-[#CCFF00] hover:text-black"
           >
-            WORKOUT
+            Workouts
           </Link>
 
           <Link
             href="/my-plan"
             className="flex-1 rounded-lg border border-white/10 bg-white/5 py-2.5 text-center text-xs font-bold tracking-wider text-white transition hover:bg-[#CCFF00] hover:text-black"
           >
-            MY PLAN
+            My Plan
           </Link>
 
         </div>
