@@ -1,2 +1,9 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
+
+:root {
+  --background: #1E1E1E;
+  --foreground: #ffffff;
+  --accent: #CCFF00;
+}
