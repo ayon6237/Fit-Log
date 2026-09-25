@@ -15,6 +15,7 @@ const ExerciseActions = ({ exercise }) => {
       <button
         onClick={() => addToPlan(exercise)}
         className="
+        cursor-pointer
           flex
           items-center
           gap-2
@@ -39,6 +40,7 @@ const ExerciseActions = ({ exercise }) => {
       <button
         onClick={() => saveForLater(exercise)}
         className="
+        cursor-pointer
           flex
           items-center
           gap-2
