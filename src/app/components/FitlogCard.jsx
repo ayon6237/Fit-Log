@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const FitlogCard = ({ item }) => {
   const {
+    id,
     name,
     image,
     rating,
@@ -13,7 +15,7 @@ const FitlogCard = ({ item }) => {
   } = item;
 
   return (
-    <div className="group overflow-hidden rounded-2xl border border-white/10 bg-[#252525] transition-all duration-300 hover:-translate-y-1 hover:border-[#CCFF00]/40">
+    <Link href={`/excercise/${id}`} className="group overflow-hidden rounded-2xl border border-white/10 bg-[#252525] transition-all duration-300 hover:-translate-y-1 hover:border-[#CCFF00]/40">
 
       {/* Image */}
       <div className="relative h-64 w-full overflow-hidden bg-[#1E1E1E]">
@@ -77,7 +79,7 @@ const FitlogCard = ({ item }) => {
         </div>
 
       </div>
-    </div>
+    </Link>
   );
 };
 
