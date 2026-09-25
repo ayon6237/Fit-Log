@@ -1,3 +1,4 @@
+import ExerciseActions from "@/app/components/ExerciseActions";
 import Image from "next/image";
 
 const getFitlogApi = async () => {
@@ -163,16 +164,9 @@ const Page = async ({ params }) => {
 
 
           <div className="flex flex-wrap gap-3 mt-7">
+ <ExerciseActions exercise={item} />
 
-            <button className="flex items-center gap-2 rounded-lg bg-[#caff00] px-5 py-3 text-sm font-bold text-black transition hover:bg-[#b7ed00]">
-              <span>▣</span>
-              Add to today&apos;s plan
-            </button>
-
-            <button className="flex items-center gap-2 rounded-lg border border-[#303743] bg-transparent px-5 py-3 text-sm text-gray-300 transition hover:bg-[#151a22]">
-              <span>♡</span>
-              Save for later
-            </button>
+          
 
           </div>
         </div>
@@ -180,9 +174,6 @@ const Page = async ({ params }) => {
     </main>
   );
 };
-
-
-/* ================= INFO ROW ================= */
 
 function InfoRow({ label, value, last = false }) {
   return (
