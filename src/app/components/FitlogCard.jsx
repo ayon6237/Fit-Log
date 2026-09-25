@@ -44,10 +44,8 @@ const FitlogCard = ({ item }) => {
           {name}
         </h2>
 
-        {/* Equipment */}
         <p className="mt-2 text-sm text-white/50">{equipment}</p>
 
-        {/* Stats */}
         <div className="mt-5 grid grid-cols-3 border-t border-white/10 pt-4">
           <div>
             <p className="text-[10px] text-white/40">DURATION</p>
