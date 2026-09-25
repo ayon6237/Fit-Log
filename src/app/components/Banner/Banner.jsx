@@ -1,13 +1,19 @@
+"use client";
+
 import React from "react";
 import BannerImage from "@/assets/banner.png";
 import Image from "next/image";
 
 const Banner = () => {
+  const scrollToLibrary = () => {
+    document.getElementById("library")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="bg-[#1E1E1E] px-6 py-16 md:px-10 lg:px-16">
-      <div className=" mx-auto flex max-w-[1200px] items-center justify-between gap-10 lg:min-h-[550px]">
-
-        {/* Left Content */}
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-10 lg:min-h-[550px]">
         <div className="w-full lg:w-1/2">
           <p className="mb-5 text-sm font-bold tracking-[0.3em] text-[#CCFF00]">
             WORKOUT LIBRARY
@@ -24,7 +30,10 @@ const Banner = () => {
             into today&apos;s plan, and watch the week&apos;s work add up.
           </p>
 
-          <button className="mt-8 rounded-full bg-[#CCFF00] px-7 py-4 text-sm font-black tracking-wide text-black transition duration-300 hover:scale-105 hover:bg-[#d9ff4d]">
+          <button
+            onClick={scrollToLibrary}
+            className="mt-8 rounded-full bg-[#CCFF00] px-7 py-4 text-sm font-black tracking-wide text-black transition duration-300 hover:scale-105 hover:bg-[#d9ff4d]"
+          >
             BROWSE WORKOUTS
           </button>
         </div>
@@ -42,7 +51,6 @@ const Banner = () => {
             />
           </div>
         </div>
-
       </div>
     </section>
   );

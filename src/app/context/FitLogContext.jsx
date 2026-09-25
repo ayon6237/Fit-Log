@@ -1,16 +1,8 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-import {
-  toast,
-  ToastContainer,
-} from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,14 +14,10 @@ export const FitlogProvider = ({ children }) => {
 
   const [mounted, setMounted] = useState(false);
 
-  // ================= LOAD DATA =================
-
   useEffect(() => {
-    const storedPlan =
-      localStorage.getItem("fitlog-plan");
+    const storedPlan = localStorage.getItem("fitlog-plan");
 
-    const storedSaved =
-      localStorage.getItem("fitlog-saved");
+    const storedSaved = localStorage.getItem("fitlog-saved");
 
     if (storedPlan) {
       setPlan(JSON.parse(storedPlan));
@@ -42,34 +30,20 @@ export const FitlogProvider = ({ children }) => {
     setMounted(true);
   }, []);
 
-  // ================= SAVE PLAN =================
-
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem(
-        "fitlog-plan",
-        JSON.stringify(plan)
-      );
+      localStorage.setItem("fitlog-plan", JSON.stringify(plan));
     }
   }, [plan, mounted]);
 
-  // ================= SAVE SAVED =================
-
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem(
-        "fitlog-saved",
-        JSON.stringify(saved)
-      );
+      localStorage.setItem("fitlog-saved", JSON.stringify(saved));
     }
   }, [saved, mounted]);
 
-  // ================= ADD TO PLAN =================
-
   const addToPlan = (exercise) => {
-    const alreadyExists = plan.some(
-      (item) => item.id === exercise.id
-    );
+    const alreadyExists = plan.some((item) => item.id === exercise.id);
 
     if (alreadyExists) {
       toast.error("Already in your plan");
@@ -81,40 +55,26 @@ export const FitlogProvider = ({ children }) => {
       completed: false,
     };
 
-    setPlan((previous) => [
-      ...previous,
-      newExercise,
-    ]);
+    setPlan((previous) => [...previous, newExercise]);
 
     toast.success("Added to today's plan");
   };
 
-  // ================= SAVE FOR LATER =================
-
   const saveForLater = (exercise) => {
-    const alreadyExists = saved.some(
-      (item) => item.id === exercise.id
-    );
+    const alreadyExists = saved.some((item) => item.id === exercise.id);
 
     if (alreadyExists) {
       toast.error("Already saved");
       return;
     }
 
-    setSaved((previous) => [
-      ...previous,
-      exercise,
-    ]);
+    setSaved((previous) => [...previous, exercise]);
 
     toast.success("Saved for later");
   };
 
-  // ================= MARK AS DONE =================
-
   const toggleDone = (id) => {
-    const currentItem = plan.find(
-      (item) => item.id === id
-    );
+    const currentItem = plan.find((item) => item.id === id);
 
     setPlan((previous) =>
       previous.map((item) =>
@@ -123,8 +83,8 @@ export const FitlogProvider = ({ children }) => {
               ...item,
               completed: !item.completed,
             }
-          : item
-      )
+          : item,
+      ),
     );
 
     if (currentItem?.completed) {
@@ -134,26 +94,14 @@ export const FitlogProvider = ({ children }) => {
     }
   };
 
-  // ================= REMOVE FROM PLAN =================
-
   const removeFromPlan = (id) => {
-    setPlan((previous) =>
-      previous.filter(
-        (item) => item.id !== id
-      )
-    );
+    setPlan((previous) => previous.filter((item) => item.id !== id));
 
     toast.success("Removed from your plan");
   };
 
-  // ================= REMOVE FROM SAVED =================
-
   const removeFromSaved = (id) => {
-    setSaved((previous) =>
-      previous.filter(
-        (item) => item.id !== id
-      )
-    );
+    setSaved((previous) => previous.filter((item) => item.id !== id));
 
     toast.success("Removed from saved");
   };
@@ -189,9 +137,7 @@ export const useFitlog = () => {
   const context = useContext(FitlogContext);
 
   if (!context) {
-    throw new Error(
-      "useFitlog must be used inside FitlogProvider"
-    );
+    throw new Error("useFitlog must be used inside FitlogProvider");
   }
 
   return context;

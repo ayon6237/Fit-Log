@@ -3,8 +3,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import { ToastContainer, toast } from 'react-toastify';
-import {FitlogProvider}  from "./context/FitLogContext.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import { FitlogProvider } from "./context/FitLogContext.jsx";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,20 +29,15 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-
         <FitlogProvider>
-            <ToastContainer />
-            <Navbar />
+          <ToastContainer />
+          <Navbar />
 
-        {children}
+          {children}
 
-        <Footer />
+          <Footer />
         </FitlogProvider>
-        
-        
-        
-        
-        </body>
+      </body>
     </html>
   );
 }

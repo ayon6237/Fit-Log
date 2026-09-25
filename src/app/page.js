@@ -1,6 +1,6 @@
-import React from 'react';
-import Banner from './components/Banner/Banner';
-import FitlogData from './components/FitlogData/FitlogData';
+import React from "react";
+import Banner from "./components/Banner/Banner";
+import FitlogData from "./components/FitlogData/FitlogData";
 
 const page = () => {
   return (

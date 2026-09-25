@@ -93,7 +93,6 @@ const Page = async ({ params }) => {
 
             <InfoRow label="CALORIES" value={`${caloriesBurned} kcal`} />
 
-            {/* Rating */}
             <InfoRow label="RATING" value={`⭐ ${rating}`} last />
           </div>
 
