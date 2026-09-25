@@ -3,11 +3,9 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useFitlog } from "../context/FitLogContext";
-import Image from "next/image";
 
 const MyPlanPage = () => {
-  const { plan, saved, removeFromPlan, removeFromSaved, toggleDone } =
-    useFitlog();
+  const { plan, saved, removeFromPlan, removeFromSaved } = useFitlog();
 
   const [activeTab, setActiveTab] = useState("today");
   const [sortBy, setSortBy] = useState("default");
@@ -49,7 +47,7 @@ const MyPlanPage = () => {
   );
 
   return (
-    <main className="min-h-screen bg-[#0b0e13] px-6 py-8 text-white">
+    <main className="min-h-screen bg-[#0b0e13] px-4 py-6 text-white sm:px-6 sm:py-8">
       <div className="mx-auto max-w-7xl">
         <h1 className="text-2xl font-extrabold">MY PLAN</h1>
 
@@ -120,7 +118,7 @@ const MyPlanPage = () => {
                 key={exercise.id}
                 exercise={exercise}
                 activeTab={activeTab}
-                onDone={() => toggleDone(exercise.id)}
+                onDone={() => removeFromPlan(exercise.id)}
                 onRemove={() => {
                   if (activeTab === "today") {
                     removeFromPlan(exercise.id);
@@ -139,7 +137,7 @@ const MyPlanPage = () => {
 
 const Stat = ({ label, value, highlight = false }) => {
   return (
-    <div className="border-b border-[#202631] px-5 py-5 sm:border-b-0 sm:border-r last:border-0">
+    <div className="border-b border-[#202631] px-5 py-5 last:border-0 sm:border-b-0 sm:border-r">
       <p className="text-[10px] text-gray-500">{label}</p>
 
       <p
@@ -155,7 +153,7 @@ const Stat = ({ label, value, highlight = false }) => {
 
 const EmptyState = ({ activeTab }) => {
   return (
-    <div className="mt-5 flex min-h-[190px] flex-col items-center justify-center rounded-xl border border-dashed border-[#252b34]">
+    <div className="mt-5 flex min-h-[190px] flex-col items-center justify-center rounded-xl border border-dashed border-[#252b34] px-5 text-center">
       <h2 className="text-sm font-bold">
         {activeTab === "today" ? "NOTHING HERE YET" : "NO SAVED EXERCISES"}
       </h2>
@@ -168,7 +166,7 @@ const EmptyState = ({ activeTab }) => {
 
       <Link
         href="/"
-        className="mt-4 rounded-full bg-[#caff00] px-5 py-2 text-xs font-bold text-black"
+        className="mt-4 rounded-full bg-[#caff00] px-5 py-2 text-xs font-bold text-black transition hover:bg-[#d9ff4d]"
       >
         Go to workouts
       </Link>
@@ -207,8 +205,11 @@ const PlanCard = ({ exercise, activeTab, onDone, onRemove }) => {
 
         <div className="mt-3 flex flex-wrap gap-4 text-xs text-gray-500">
           <span>{exercise.sets} sets</span>
+
           <span>{exercise.reps} reps</span>
+
           <span>{exercise.duration} min</span>
+
           <span>{exercise.caloriesBurned} kcal</span>
 
           {exercise.rating !== undefined && <span>★ {exercise.rating}</span>}
@@ -226,19 +227,7 @@ const PlanCard = ({ exercise, activeTab, onDone, onRemove }) => {
         {isToday && (
           <button
             onClick={onDone}
-            className={`
-              rounded-md
-              px-3
-              py-2
-              text-xs
-              font-semibold
-              transition
-              ${
-                exercise.completed
-                  ? "bg-green-500 text-white"
-                  : "border border-[#303743] text-gray-300 hover:bg-green-500/20 hover:text-green-400"
-              }
-            `}
+            className="rounded-md border border-[#303743] px-3 py-2 text-xs font-semibold text-gray-300 transition hover:bg-green-500/20 hover:text-green-400"
           >
             Mark as Done
           </button>
